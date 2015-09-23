@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/', function() {
+
+	return 'jsdflk';
+
+});
+
 Route::get('/home', 'CompanyController@index');
 
 
