@@ -14,6 +14,9 @@
 
 Route::get('/home', 'CompanyController@index');
 
+Route::get('/', function() {
+	return app()->environment();
+});
 
 Route::resource('users','UserController');
 
