@@ -14,7 +14,6 @@ class CreateBenchmarksTable extends Migration
     {
         Schema::create('benchmarks', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('benchmark_data')->unique();
             $table->string('benchmark_data');
             $table->integer('company_id')->unsigned();
             $table->timestamps();

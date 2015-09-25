@@ -58,6 +58,7 @@ class CompanyController extends Controller
     public function show($id)
     {
         $data['company'] = Company::find($id);
+        return $data;
         $data['approved'] = $data['company']->getApproved();
         $data['keywordsPlans'] = $data['company']->keywordsPlans;
         $data['benchmarks'] = $data['company']->benchmarks;

@@ -23,7 +23,7 @@ Route::get('/', function() {
 	$password = $url["pass"];
 	$database = substr($url["path"], 1);
 
-	return Crypt::encrypt('Uchiha	');
+	return $host . " " . $username . " " . $password . " " . $database;
 
 	return app()->environment();
 });
