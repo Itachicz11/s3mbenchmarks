@@ -28,4 +28,5 @@ class CreateUser extends Request
             'password' => 'required|confirmed'
         ];
     }
+
 }
