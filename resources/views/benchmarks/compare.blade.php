@@ -19,7 +19,6 @@
 					<thead>
 						<tr>
 							<th>Keyword</th>
-							<th>city</th>
 							@foreach ($benchmarks as $benchmark)
 							<th>{!! $benchmark->date !!}</th>
 							@endforeach
@@ -28,14 +27,13 @@
 					</thead>
 					<tbody>
 						<?php $i = 0; ?>
-						@foreach ($keywords as $keyword => $city)
+						@foreach ($keywords as $key => $keyword)
+
 							<tr class="benchmark-row">
 								<td>{!! $keyword !!}</td>
-								<td>{!! $city !!}</td>
-								@foreach ($benchmarks as $benchmark)
-									<td>{!! $benchmark->data[$i] !!}</td>
-								@endforeach
-								<td>{!! $compared[$i] !!}</td>
+								<td>{!! $benchmarks[0]->page_ranks[$key]->value !!}</td>
+								<td>{!! $benchmarks[1]->page_ranks[$key]->value !!}</td>
+								<td>{!! $results[$key] !!}</td>
 							</tr>
 							<?php $i++; ?>
 						@endforeach
@@ -48,7 +46,7 @@
 				</table>
 
 
-
+				{!! link_to_route('companies.show', 'Back', ['company' => $benchmarks[0]->company], ['class' => 'btn btn-primary']) !!}
 
 			</div>
 		</div>

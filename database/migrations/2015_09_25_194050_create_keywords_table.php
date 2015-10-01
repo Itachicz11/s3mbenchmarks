@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBenchmarksTable extends Migration
+class CreateKeywordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,15 @@ class CreateBenchmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('benchmarks', function (Blueprint $table) {
+        Schema::create('keywords', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->unique();
+            $table->text('text');
+            $table->integer('keywords_plan_id')->unsigned();
+            $table->foreign('keywords_plan_id')->references('id')->on('keywords_plans')->onDelete('cascade');
             $table->integer('company_id')->unsigned();
-            $table->timestamps();
-            
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateBenchmarksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('benchmarks');
+        Schema::drop('keywords');
     }
 }

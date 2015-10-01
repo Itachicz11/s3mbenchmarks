@@ -15,13 +15,11 @@ class CreateKeywordsPlansTable extends Migration
         Schema::create('keywords_plans', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date')->unique();
-            $table->text('cities');
-            $table->text('keywords');
             $table->boolean('approved');
             $table->integer('company_id')->unsigned();
-            $table->timestamps();
-            
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

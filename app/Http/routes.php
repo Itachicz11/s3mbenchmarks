@@ -16,17 +16,9 @@ Route::get('/home', 'CompanyController@index');
 
 Route::get('/', function() {
 
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-	$host = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$database = substr($url["path"], 1);
-
-	return $host . " " . $username . " " . $password . " " . $database;
-
-	return app()->environment();
+	return redirect('/auth/login');
 });
+
 
 Route::resource('users','UserController');
 
@@ -35,18 +27,45 @@ Route::resource('companies', 'CompanyController');
 Route::resource('benchmarks', 'BenchmarkController',
 	['except' => ['create', 'edit']]);
 
+
+/*----------  Keywordsplans  ----------*/
 Route::resource('keywordsplans', 'KeywordsPlanController',
 	['except' => ['create', 'edit']]);
+
+Route::get('keywordsplans/{company}/create', [
+	'as' => 'keywordsplans.create',
+	'uses' => 'KeywordsPlanController@create'
+]);
+
+Route::get('keywordsplans/{keywordsplan}/edit', [
+	'as' => 'keywordsplans.edit',
+	'uses' => 'KeywordsPlanController@edit'
+]);
+
+Route::get('keywordsplans/{id}/approved', [
+	'as' => 'keywordsplans.approved',
+	'uses' => 'KeywordsPlanController@approved'
+]);
+
+
+/*----------  Keywords  ----------*/
+Route::resource('keywords', 'KeywordController',
+['except' => ['create', 'edit']]);
+
+Route::get('keywords/{company}/{keywordsplan}/create', [
+	'as' => 'keywords.create',
+	'uses' => 'KeywordController@create'
+]);
+
+Route::get('keywords/{keywordsplan}/{keyword}/edit', [
+	'as' => 'keywords.edit',
+	'uses' => 'KeywordController@edit'
+]);
 
 
 Route::get('benchmarks/{company}/create', [
 	'as' => 'benchmarks.create',
 	'uses' => 'BenchmarkController@create'
-]);
-
-Route::get('keywordsplans/{company}/create', [
-	'as' => 'keywordsplans.create',
-	'uses' => 'KeywordsPlanController@create'
 ]);
 
 Route::get('benchmarks/{id}/{company}/edit', [
@@ -57,17 +76,6 @@ Route::get('benchmarks/{id}/{company}/edit', [
 Route::post('benchmarks/compare', [
 	'as' => 'benchmarks.compare',
 	'uses' => 'BenchmarkController@compare'
-]);
-
-
-Route::get('keywordsplans/{id}/{company}/edit', [
-	'as' => 'keywordsplans.edit',
-	'uses' => 'KeywordsPlanController@edit'
-]);
-
-Route::get('keywordsplans/{id}/approved', [
-	'as' => 'keywordsplans.approved',
-	'uses' => 'KeywordsPlanController@approved'
 ]);
 
 

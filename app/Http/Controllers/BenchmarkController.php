@@ -9,8 +9,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Company;
+use App\PageRank;
 use App\Benchmark;
 use App\Http\Requests\CreateBenchmark;
+use App\Http\Requests\CompareBenchmarks;
 use Illuminate\Support\Facades\Input;
 
 class BenchmarkController extends Controller
@@ -42,8 +44,9 @@ class BenchmarkController extends Controller
     public function create($company)
     {
         $data['benchmark'] = new Benchmark;
-        $data['company'] = $company;
-        $data['keywords'] = Company::find($company)->getKeywords();
+        $data['company'] = Company::find($company);
+        $data['keywords'] = $data['company']->keywords;
+
 
         return view("benchmarks/create", $data);
     }
@@ -59,10 +62,20 @@ class BenchmarkController extends Controller
         $company_id = $request->input('company');
         $benchmark = new Benchmark;
         $benchmark->date = $request->input('date');
-        $benchmark->benchmark_data = $request->input('benchmark_data');
         $benchmark->company_id = $request->input('company');
 
         $benchmark->save();
+
+        $page_ranks = [];
+        foreach ($request->page_rank as $key => $value) {
+            $page_rank = new PageRank;
+            $page_rank->value = $value;
+            $page_rank->keyword_id = $key;
+            $page_rank->benchmark_id = $benchmark->id;
+            array_push($page_ranks, $page_rank);
+        }
+
+        $benchmark->page_ranks()->saveMany($page_ranks);
 
         return redirect("companies/$company_id");
     }
@@ -76,7 +89,7 @@ class BenchmarkController extends Controller
     public function show($id)
     {
         $data['benchmark'] = Benchmark::find($id);
-        $data['keywords'] = $data['benchmark']->company->getKeywords();
+        $data['page_ranks'] = $data['benchmark']->page_ranks()->get();
 
         return view('benchmarks/show', $data);
     }
@@ -89,12 +102,12 @@ class BenchmarkController extends Controller
      */
     public function edit($id, $company)
     {
-        $benchmark_data['benchmark'] = Benchmark::find($id);
-        $benchmark_data['company'] = $company;
-        $benchmark_data['keywords'] = Company::find($company)->getKeywords();
+        $data['benchmark'] = Benchmark::find($id);
+        $data['company'] = $company;
+        $data['page_ranks'] = $data['benchmark']->page_ranks()->get();
 
 
-        return view('benchmarks/edit', $benchmark_data);
+        return view('benchmarks/edit', $data);
     }
 
     /**
@@ -106,11 +119,16 @@ class BenchmarkController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        foreach ($request->input('page_rank') as $index => $page_rank) {
+            $temp = PageRank::find($index);
+            $temp->value = $page_rank;
+            $temp->save();
+        }
+
         $benchmark = Benchmark::find($id);
-        $benchmark = $benchmark->update($request->all());
-
-        dd($benchmark);
-
+        $benchmark->date = $request->input('date');
+        $benchmark->save();
 
         return redirect("benchmarks/$id");
     }
@@ -118,7 +136,7 @@ class BenchmarkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
@@ -127,20 +145,30 @@ class BenchmarkController extends Controller
     }
 
 
-    public function compare()
+    public function compare(CompareBenchmarks $request)
     {
-        $benchmarks = json_decode(Input::get('benchmarks_arr'));
+        $benchmark_ids = $request->input('compare');
+        $benchmarks = Benchmark::whereIn('id', $benchmark_ids)->orderBy('date', 'ASC')->get();
+        $company = Company::find($request->input('company'));
+        $keywords = $company->keywords->pluck('text');
 
-        $benchmarks = Benchmark::whereIn('id', $benchmarks)->orderBy('date', 'DESC')->get();
 
+        $results = [];
+        foreach ($benchmarks[0]->page_ranks as $key => $page_rank) {
+            $keyword = $page_rank->keyword->text;
+
+            $value = $benchmarks[0]->page_ranks[$key]->value - $benchmarks[1]->page_ranks[$key]->value;
+
+            array_push($results, $value);
+        }
 
         $data['benchmarks'] = $benchmarks;
-        $data['keywords'] = $benchmarks->first()->company->getKeywords();
-        $data['compared'] = $benchmarks->first()->compare($benchmarks->last()->id);
+        $data['results'] = $results;
+        $data['keywords'] = $keywords;
+        $data['company'] = $company;
 
+        return view('benchmarks.compare', $data);
 
-
-        return view('benchmarks/compare', $data);
     }
 
 }

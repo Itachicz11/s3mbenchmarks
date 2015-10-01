@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Keyword;
+use App\Company;
 use App\Http\Controllers\Controller;
 
 use App\KeywordsPlan;
@@ -39,7 +41,7 @@ class KeywordsPlanController extends Controller
     public function create($company)
     {
         $data['keywordsPlan'] = new KeywordsPlan;
-        $data['company'] = $company;
+        $data['company'] = Company::find($company);
         return view("keywordsPlans/create", $data);
     }
 
@@ -51,12 +53,10 @@ class KeywordsPlanController extends Controller
      */
     public function store(CreateKeywordsPlan $request)
     {
-
         $company_id = $request->input('company');
+
         $keywordsPlan = new KeywordsPlan;
         $keywordsPlan->date = $request->input('date');
-        $keywordsPlan->keywords = $request->input('keywords');
-        $keywordsPlan->cities = $request->input('cities');
         $keywordsPlan->approved = false;
         $keywordsPlan->company_id = $company_id;
 
@@ -74,6 +74,8 @@ class KeywordsPlanController extends Controller
     public function show($id)
     {
         $data['keywordsPlan'] = KeywordsPlan::find($id);
+        $data['company'] = $data['keywordsPlan']->company;
+
         return view('keywordsplans/show', $data);
     }
 
@@ -83,10 +85,10 @@ class KeywordsPlanController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id, $company)
+    public function edit($id)
     {
         $data['keywordsPlan'] = KeywordsPlan::find($id);
-        $data['company'] = $company;
+        $data['company'] = $data['keywordsPlan']->company;
         return view('keywordsplans/edit', $data);
     }
 

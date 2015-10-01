@@ -39,15 +39,10 @@ class Company extends Model
 	    return $this->hasMany('App\KeywordsPlan');
 	}
 
-	public function getKeywords()
-	{
-		$output = [];
-		foreach ($this->keywordsPlans as $keyword => $value) {
-			$keywords = json_decode($value->keywords, true);
-			$output = array_merge($output, $keywords);
-		};
 
-		return $output;
+	public function keywords()
+	{
+	    return $this->hasMany('App\Keyword');
 	}
 
 	/**

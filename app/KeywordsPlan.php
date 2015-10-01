@@ -21,7 +21,7 @@ class KeywordsPlan extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['date', 'keywords', 'cities', 'approved'];
+	protected $fillable = ['date', 'approved'];
 
 
 	/**
@@ -29,12 +29,17 @@ class KeywordsPlan extends Model
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['company_id', 'company'];
+	protected $hidden = ['company_id'];
 
 
 	public function company()
 	{
 	    return $this->belongsTo('App\Company');
+	}
+
+	public function keywords()
+	{
+		return $this->hasMany('App\Keyword');
 	}
 
 }

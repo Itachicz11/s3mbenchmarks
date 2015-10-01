@@ -1,16 +1,4 @@
 
-// Display already created keywords and page ranks when the validation failes
-var dataInput = $('input[name="cities"]').val();
-if (dataInput !== "{}" && dataInput !== "" )  {
-
-	var data = JSON.parse(dataInput);
-
-	$.each(data, function(index, val) {
-		$('.cities-table').append( rowHtml(val) );
-	});	
-
-}
-
 addCity();
 
 citiesSelect();
@@ -24,23 +12,27 @@ $('.cities-table').on('click', '.remove-city', function(event) {
 
 // Add keyword functionality
 function addCity() {
+	var i = 0;
 	$('.add-city').click(function(event) {
-
 		var rowCopy = $('.city-copy-row').clone();
 		var city = $('.city-input').val();
 
 		$(rowCopy).attr('class', 'city-row').find('.city').text(city);
+		$(rowCopy).find('input[type="text"]').attr('name', 'city['+i+']').val(city);
 		$(rowCopy).appendTo('.cities-table tbody');
 
 		$('.city-input').focus().val("");
+
+		i++;
 	});
 }
 
 
 // Shorthand for HTML string
-function rowHtml(city) {
+function rowHtml(city, index) {
 	var htmlString = '<tr class="city-row">'+
 	'<td class="city">'+city+'</td>'+
+	'<td class="hidden"><input name="city['+index+']" type="text"></td>'+
 	'<td class="action"><input type="button" class="btn btn-danger remove-city" value="Remove"></td>'+
 	'</tr>';
 
@@ -70,7 +62,7 @@ function citiesSelect() {
 
 		$(citiesArr).each(function(index, el) {
 			$('.city-select').append($('<option>', { 
-			    value: el,
+			    value: index,
 			    text : el 
 			}));
 		});

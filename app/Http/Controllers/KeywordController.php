@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Keyword;
 use App\Company;
+
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateKeyword;
+
 use App\Http\Requests;
-use App\Http\Requests\CreateCompany;
+use App\Http\Controllers\Controller;
 
-class CompanyController extends Controller
+class KeywordController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +20,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return view('companies/index', ['companies' => $companies]);
+        //
     }
 
     /**
@@ -31,22 +28,34 @@ class CompanyController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create($company, $keywords_plan)
     {
-        return view('companies/create');
+        $data['keyword'] = new Keyword;
+        $data['keywords_plan'] = $keywords_plan;
+        $data['company'] = Company::find($company);
+
+        return view('keywords/create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateCompany|Request $request
+     * @param  Request  $request
      * @return Response
      */
-    public function store(CreateCompany $request)
+    public function store(CreateKeyword $request)
     {
-        Company::create($request->all());
+        $keywords_plan_id = $request->input('keywords_plan');
 
-        return redirect('/companies');
+        foreach ($request->input('keyword') as $text) {
+            $keyword = new Keyword;
+            $keyword->text = $text;
+            $keyword->keywords_plan_id = $keywords_plan_id;
+            $keyword->company_id = $request->input('company');
+            $keyword->save();
+        }
+
+        return redirect("keywordsplans/$keywords_plan_id");
     }
 
     /**
@@ -57,12 +66,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $data['company'] = Company::find($id);
-        $data['approved'] = $data['company']->getApproved();
-        $data['keywordsPlans'] = $data['company']->keywordsPlans;
-        $data['benchmarks'] = $data['company']->benchmarks;
-
-        return view('companies/show', $data);
+        //
     }
 
     /**
@@ -73,7 +77,6 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -85,7 +88,15 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $keyword = Keyword::find($id);
+        $keyword->text = $request->input('keyword')[0];
+        $keyword->save();
+
+        $keywordsplan = $keyword->keywords_plan;
+        $keywordsplan = $keywordsplan->id;
+
+
+        return redirect("keywordsplans/$keywordsplan/edit");
     }
 
     /**

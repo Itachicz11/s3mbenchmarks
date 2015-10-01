@@ -25,8 +25,6 @@ class CreateKeywordsPlan extends Request
     {
         return [
             'date' => 'required|date|unique:keywords_plans,date',
-            'cities' => 'required',
-            'keywords' => 'required',
             'approved' => 'boolean'
         ];
     }

@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
-    
+
 use App\Http\Requests\Request;
 
-class CreateBenchmark extends Request
+class CompareBenchmarks extends Request
 {
-
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,8 +24,15 @@ class CreateBenchmark extends Request
     public function rules()
     {
         return [
-            'date' => 'required|date|unique:benchmarks,date',
-            'page_rank' => 'required'
+            'compare' => 'required|array|min:2'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'compare.required' => 'Select benchmarks you want to compare.',
+            'compare.min' => 'Select at least 2 benchmarks',
         ];
     }
 

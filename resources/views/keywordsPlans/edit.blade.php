@@ -7,6 +7,8 @@
 
 @section('content')
 
+@include('partials.company_heading')
+
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
@@ -23,112 +25,34 @@
 				</div>
 				@endif
 
+				<table class="table table-striped keywords-table">
+					<thead>
+						<tr>
+							<th>Keyword</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $i = 0 ?>
+						@foreach ($keywordsPlan->keywords as $keyword)
+							{!! Form::model($keyword, ['route' => ['keywords.update', $keyword->id], 'method' => 'PUT']) !!}
+							<tr>
+								<td>
+									{!! Form::text('keyword[]', $keyword->text, ['class' => 'form-control ']) !!}
+								</td>
+								<td>
+									{!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
+								</td>
+							</tr>
+							{!! Form::close() !!}
+							<?php $i++ ?>
+						@endforeach
+					</tbody>
+				</table>
 
-				{!! Form::model($keywordsPlan, ['route' => ['keywordsplans.update', 'id' => $keywordsPlan->id, 'company' => $company], 'method' => 'PATCH', 'class' => 'form-horizontal keywords-plan-form']) !!}
-
-				<div class="row form-group">
-					<div class="col-xs-12">
-						<ul class="nav nav-pills nav-justified thumbnail setup-panel">
-							<li class="active"><a href="#step-1">
-								<h4 class="list-group-item-heading">Step 1</h4>
-								<p class="list-group-item-text">Date</p>
-							</a></li>
-							<li class="disabled"><a href="#step-2">
-								<h4 class="list-group-item-heading">Step 2</h4>
-								<p class="list-group-item-text">Cities</p>
-							</a></li>
-							<li class="disabled"><a href="#step-3">
-								<h4 class="list-group-item-heading">Step 3</h4>
-								<p class="list-group-item-text">Keywords</p>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="row setup-content" id="step-1">
-					<div class="col-xs-12">
-						<div class="col-md-12 well text-center">
-
-							<div class="col-md-4 col-md-offset-4">
-								{!! Form::date('date', null, ['class' => 'form-control']) !!}
-							</div>
-
-							<div class="col-md-12">
-								<button id="activate-step-2" class="btn btn-primary btn-lg second-step">Next Step</button>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="row setup-content" id="step-2">
-					<div class="col-xs-12">
-						<div class="col-md-12 well text-center">
-
-							{!! Form::text('cities', null, ['class' => 'hidden']) !!}
-
-							<table class="table table-striped cities-table">
-								<thead>
-									<tr>
-										<th>City</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td scope="row">{!! Form::text(null, null, ['class' => 'form-control city-input']) !!}</td>
-										<td scope="row"><a href="#" class="btn btn-info add-city">Add City</a></td>
-									</tr>
-									<tr class="city-copy-row hidden">
-										<td class="city"></td>
-										<td class="action"><input type="button" class="btn btn-danger remove-city" value="Remove"></td>
-									</tr>
-								</tbody>
-							</table>
-
-							<button id="activate-step-3" class="btn btn-primary btn-lg step-cities">Next Step</button>
-						</div>
-					</div>
-				</div>
-				<div class="row setup-content" id="step-3">
-					<div class="col-xs-12">
-						<div class="col-md-12 well">
+				{!! link_to_route("keywordsplans.show", "Back", ['id' => $keywordsPlan], ['class' => 'btn btn-primary']) !!}
 
 
-							{!! Form::text('keywords', null, ['class' => 'hidden', 'placeholder' => 'JSON data']) !!}
-
-
-							<table class="table table-striped keywords-table">
-								<thead>
-									<tr>
-										<th>Keyword</th>
-										<th>City</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td scope="row">{!! Form::text(null, null, ['class' => 'form-control keyword-input']) !!}</td>
-										<td scope="row">{!! Form::select(null, array(), null, ['class' => 'form-control city-select']) !!}</td>
-										<td scope="row"><a href="#" class="btn btn-primary add-keyword">Add keyword</a></td>
-									</tr>
-									<tr class="keyword-copy-row hidden">
-										<td class="keyword"></td>
-										<td class="city"></td>
-										<td class="action"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-
-						<div class="col-md-12 text-center">
-							{!! Form::submit('Save Plan', ['class' => 'btn btn-success btn-lg save-plan']); !!}
-						</div>
-
-					</div>
-				</div>
-
-				{!! Form::close() !!}
 
 			</div>
 		</div>

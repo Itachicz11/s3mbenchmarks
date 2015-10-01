@@ -2,8 +2,9 @@
 
 @section('content')
 
-<h2>Companies</h2>
+{!! link_to_route('companies.create', 'Add Company', null, ['class' => 'btn btn-primary']) !!}
 
+<h2>Companies</h2>
 
 <table class="table table-striped">
 	<thead>

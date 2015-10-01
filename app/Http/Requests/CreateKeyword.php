@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
-    
+
 use App\Http\Requests\Request;
 
-class CreateBenchmark extends Request
+class CreateKeyword extends Request
 {
-
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,9 +24,7 @@ class CreateBenchmark extends Request
     public function rules()
     {
         return [
-            'date' => 'required|date|unique:benchmarks,date',
-            'page_rank' => 'required'
+            'keyword' => 'required'
         ];
     }
-
 }

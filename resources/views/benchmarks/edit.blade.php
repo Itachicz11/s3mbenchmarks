@@ -24,19 +24,14 @@
 				</div>
 				@endif
 
-				{!! $benchmark->benchmark_data !!}
-
 				{!! Form::model($benchmark, ['route' => ['benchmarks.update', 'id' => $benchmark->id, 'company' => $company], 'method' => 'PATCH', 'class' => 'form-horizontal benchmark-form']) !!}
 
 					<div class="row">						
 						<div class="col-md-4">
 							{!! Form::date('date', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="hidden">
-							{!! Form::text('benchmark_data', null, ['class' => 'form-control', 'placeholder' => 'JSON data']) !!}
-						</div>
 						<div class="col-md-4">
-							{!! Form::submit('Save Benchmark', ['class' => 'btn btn-success save-benchmark']); !!}
+							{!! Form::submit('Update Benchmark', ['class' => 'btn btn-success save-benchmark']); !!}
 						</div>
 					</div>
 
@@ -44,20 +39,15 @@
 						<thead>
 							<tr>
 								<th>Keyword</th>
-								<th>city</th>
 								<th>Page Rank</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 0; ?>
-							@foreach ($keywords as $keyword => $city)
+							@foreach ($page_ranks as $page_rank)
 								<tr class="benchmark-row">
-									<td>{!! $keyword !!}</td>
-									<td>{!! $city !!}</td>
-									<td>{!! Form::number('page-rank', $benchmark->benchmark_data[$i], ['class' => 'form-control page-rank-input']) !!}</td>
+									<td>{!! $page_rank->keyword->text !!}</td>
+									<td>{!! Form::number('page_rank['.$page_rank->id.']', $page_rank->value, ['class' => 'form-control page-rank-input']) !!}</td>
 								</tr>
-
-								<?php $i++; ?>
 							@endforeach
 							<tr class="copy-row hidden">
 								<td class="keyword"></td>

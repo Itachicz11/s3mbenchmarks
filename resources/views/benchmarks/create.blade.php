@@ -31,9 +31,7 @@
 						<div class="col-md-4">
 							{!! Form::date('date', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="hidden">
-							{!! Form::text('benchmark_data', null, ['class' => 'form-control', 'placeholder' => 'JSON data']) !!}
-						</div>
+		
 						<div class="col-md-4">
 							{!! Form::submit('Save Benchmark', ['class' => 'btn btn-success save-benchmark']); !!}
 						</div>
@@ -43,16 +41,14 @@
 						<thead>
 							<tr>
 								<th>Keyword</th>
-								<th>city</th>
 								<th>Page Rank</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($keywords as $keyword => $city)
+							@foreach ($keywords as $keyword)
 								<tr class="benchmark-row">
-									<td>{!! $keyword !!}</td>
-									<td>{!! $city !!}</td>
-									<td>{!! Form::number('page-rank', null, ['class' => 'form-control page-rank-input']) !!}</td>
+									<td>{!! $keyword->text !!}</td>
+									<td>{!! Form::number('page_rank['.$keyword->id.']', null, ['class' => 'form-control page-rank-input']) !!}</td>
 								</tr>
 							@endforeach
 							<tr class="copy-row hidden">

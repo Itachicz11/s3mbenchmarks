@@ -1,16 +1,5 @@
 
 // Display already created keywords and page ranks when the validation failes
-var dataInput = $('input[name="keywords"]').val();
-if (dataInput !== "{}" && dataInput !== "" )  {
-
-	var data = JSON.parse(dataInput);
-
-	$.each(data, function(index, val) {
-		$('.keywords-table').append( rowHtml(index, val) );
-	});	
-
-}
-
 addKeyword();
 
 saveKeywordsPlan();
@@ -24,18 +13,21 @@ $('.keywords-table').on('click', '.remove-keyword', function(event) {
 
 // Add keyword functionality
 function addKeyword() {
-	$('.add-keyword').click(function(event) {
+		var i = 0;
+		$('.add-keyword').click(function(event) {
 
 		var rowCopy = $('.keyword-copy-row').clone();
 		var keyword = $('.keyword-input').val();
-		var city = $('.city-select').val();
+
 
 		$(rowCopy).attr('class', 'keyword-row');
 		$(rowCopy).find('.keyword').text(keyword);
-		$(rowCopy).find('.city').text(city);
 		$(rowCopy).appendTo('.keywords-table tbody');
+		$(rowCopy).find('input[type="text"]').attr('name', 'keyword['+i+']').val(keyword);
 
 		$('.keyword-input').focus().val("");
+
+		i++;
 	});
 }
 

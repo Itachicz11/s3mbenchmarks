@@ -37,36 +37,13 @@ class Benchmark extends Model
 	    return $this->belongsTo('App\Company');
 	}
 
-
-
-	/**
-	 * Retrieves an array of values that will be showed in comparision table
-	 *
-	 * @var id - id of benchmark to compare with
-	 */
-	public function compare($id)
+	public function keywords()
 	{
-		$datasetFirst = $this->data;
-		$datasetSecond = $this::find($id)->data;
-		$comparedData = [];
-
-
-		foreach ($datasetFirst as $key => $value) {
-			$comparedData[$key] = $value - $datasetSecond[$key];
-		}
-
-		return $comparedData;
+	    return $this->hasManyThrough('App\Keyword', 'App\Company');
 	}
 
-
-	/**
-	 * Decode json array taken from database
-	 *
-	 * @var id - id of benchmark to compare with
-	 */
-	public function getDataAttribute($value)
+	public function page_ranks()
 	{
-		return json_decode($value);
+		return $this->hasMany('App\PageRank');
 	}
-
 }
