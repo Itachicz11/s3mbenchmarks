@@ -17,7 +17,7 @@
 	<tbody>
 		@foreach ($companies as $company)
 			<tr>
-				<td scope="row">{!! link_to_route('companies.show', $company->name, ['1'] ) !!}</td>
+				<td scope="row">{!! link_to_route('companies.show', $company->name, [$company] ) !!}</td>
 				<td><a href="{!! $company->url !!}" target="_blank">{!! $company->url !!}</a></td>
 				<td><a href="mailto:{!! $company->email !!}">{!! $company->email !!}</a></td>
 			</tr>
