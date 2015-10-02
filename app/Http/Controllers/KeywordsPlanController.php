@@ -76,7 +76,7 @@ class KeywordsPlanController extends Controller
         $data['keywordsPlan'] = KeywordsPlan::find($id);
         $data['company'] = $data['keywordsPlan']->company;
 
-        return view('keywordsplans/show', $data);
+        return view('keywordsPlans/show', $data);
     }
 
     /**
@@ -89,7 +89,7 @@ class KeywordsPlanController extends Controller
     {
         $data['keywordsPlan'] = KeywordsPlan::find($id);
         $data['company'] = $data['keywordsPlan']->company;
-        return view('keywordsplans/edit', $data);
+        return view('keywordsPlans/edit', $data);
     }
 
     /**
