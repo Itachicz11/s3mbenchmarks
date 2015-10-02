@@ -45,7 +45,7 @@ class BenchmarkController extends Controller
     {
         $data['benchmark'] = new Benchmark;
         $data['company'] = Company::find($company);
-        $data['keywords'] = $data['company']->keywords;
+        $data['keywords'] = $data['company']->keywords->unique();
 
 
         return view("benchmarks/create", $data);
