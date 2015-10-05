@@ -13,20 +13,18 @@ $('.keywords-table').on('click', '.remove-keyword', function(event) {
 
 // Add keyword functionality
 function addKeyword() {
-		var i = 0;
-		$('.add-keyword').click(function(event) {
+	var i = $('.keyword-row').length;
+	$('.add-keyword').click(function(event) {
 
 		var rowCopy = $('.keyword-copy-row').clone();
 		var keyword = $('.keyword-input').val();
 
 
 		$(rowCopy).attr('class', 'keyword-row');
-		$(rowCopy).find('.keyword').text(keyword);
 		$(rowCopy).appendTo('.keywords-table tbody');
 		$(rowCopy).find('input[type="text"]').attr('name', 'keyword['+i+']').val(keyword);
 
 		$('.keyword-input').focus().val("");
-
 		i++;
 	});
 }

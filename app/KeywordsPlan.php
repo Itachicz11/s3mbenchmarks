@@ -21,7 +21,7 @@ class KeywordsPlan extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['date', 'approved'];
+	protected $fillable = ['date', 'approved', 'keyword'];
 
 
 	/**

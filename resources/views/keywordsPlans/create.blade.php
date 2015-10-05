@@ -24,6 +24,7 @@
 				@endif
 
 
+				{{-- {!! Form::open(['route' => ['keywordsplans.store', $company], 'method' => 'POST', 'class' => 'form-horizontal keywords-plan-form']) !!} --}}
 				{!! Form::model($keywordsPlan, ['route' => ['keywordsplans.store', 'company' => $company], 'method' => 'POST', 'class' => 'form-horizontal keywords-plan-form']) !!}
 
 
@@ -32,6 +33,44 @@
 						{!! Form::label('Date') !!}
 						{!! Form::date('date', null, ['class' => 'form-control']) !!}
 					</div>
+
+
+					<table class="table table-stripped">
+						<thead>
+							<tr>
+								<th>Add Keyword</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row">{!! Form::text(null, null, ['class' => 'form-control keyword-input']) !!}</td>
+								<td scope="row"><a href="#" class="btn btn-primary add-keyword">Add keyword</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-striped keywords-table">
+						<thead>
+							<tr>
+								<th>Keyword</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($keywords as $i => $keyword)
+							<tr class="keyword-row">
+								<td scope="row">{!! Form::text('keyword['.$i.']', $keyword->text, ['class' => 'form-control']) !!}</td>
+								<td class="action"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></td>
+							</tr>
+							@endforeach
+							<tr class="keyword-copy-row hidden">
+								<td>{!! Form::text(null, null, ['class' => 'form-control']) !!}</td>
+								<td class="action"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></td>
+							</tr>
+						</tbody>
+					</table>
+
 					<div class="col-md-4 col-md-offset-4 text-center">
 						{!! Form::submit('Create Plan', ['class' => 'btn btn-success btn-lg save-plan']); !!}
 					</div>

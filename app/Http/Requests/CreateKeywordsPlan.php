@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Http\Requests\Input;
 
 class CreateKeywordsPlan extends Request
 {
@@ -23,9 +24,20 @@ class CreateKeywordsPlan extends Request
      */
     public function rules()
     {
-        return [
+
+
+        $rules = [
             'date' => 'required|date|unique:keywords_plans,date',
             'approved' => 'boolean'
         ];
+
+        for ($i = 0; $i < count($this->keyword); $i++) {
+
+            $rules['keyword'.$i] = 'array';
+
+        }
+
+        return $rules;
+
     }
 }

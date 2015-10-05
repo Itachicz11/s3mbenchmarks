@@ -42,6 +42,8 @@ class KeywordsPlanController extends Controller
     {
         $data['keywordsPlan'] = new KeywordsPlan;
         $data['company'] = Company::find($company);
+        $data['keywords'] = $data['company']->keywords;
+
         return view("keywordsPlans/create", $data);
     }
 

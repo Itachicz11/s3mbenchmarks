@@ -22,7 +22,7 @@
 				@endif
 				<td scope="row">
 
-				{!! Form::open(array('route' => array('keywordsplans.destroy', $keywordsPlan->id), 'method' => 'delete')) !!}
+				{!! Form::open(array('route' => array('keywordsplans.destroy', $keywordsPlan->id), 'method' => 'DELETE')) !!}
 				    <button type="submit" class="btn btn-danger remove-plan" data-plan="<?php echo $keywordsPlan->id; ?>">Delete</button>
 				{!! Form::close() !!}
 
