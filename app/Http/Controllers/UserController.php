@@ -43,7 +43,10 @@ class UserController extends Controller
     public function store(CreateUser $request)
     {
 
-        User::create($request->all());
+        $user = new User;
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
 
         return redirect('/');
     }
