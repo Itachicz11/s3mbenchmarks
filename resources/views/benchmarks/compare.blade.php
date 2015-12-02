@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('scripts')
-	<script type="text/javascript" src="{{ asset('js/benchmark_table.js') }}"></script>
-@stop
+
 
 @section('content')
 
@@ -20,7 +18,7 @@
 						<tr>
 							<th>Keyword</th>
 							@foreach ($benchmarks as $benchmark)
-							<th>{!! $benchmark->date !!}</th>
+								<th>{!! $benchmark->date !!}</th>
 							@endforeach
 							<th>Difference</th>
 						</tr>
@@ -63,4 +61,3 @@
 
 @endsection
 
-@stop
