@@ -22,12 +22,12 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#">S3Benchmarks</a>
+	          {!! link_to('/', 'S3Benchmarks', ['class' => 'navbar-brand']) !!}
 	        </div>
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
 	          	<li>{!! link_to_route('companies.index', 'Companies', '') !!}</li>
-	          	<li>{!! link_to('/auth//logout', 'Logout') !!}</li>
+	          	<li>{!! link_to('/auth/logout', 'Logout') !!}</li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
