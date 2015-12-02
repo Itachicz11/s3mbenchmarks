@@ -3,7 +3,7 @@
 
 
 $.ajax
-  url: 'http://localhost/laravel/public/callrail/users_companies_data'
+  url: 'callrail/users_companies_data'
   type: "GET"
   dataType: "JSON"
   success: (data) ->
