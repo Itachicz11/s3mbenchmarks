@@ -7,7 +7,7 @@
   var drawChart;
 
   $.ajax({
-    url: 'callrail/users_companies_data',
+    url: '/callrail/users_companies_data',
     type: "GET",
     dataType: "JSON",
     success: function(data) {
