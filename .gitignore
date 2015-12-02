@@ -3,3 +3,4 @@
 Homestead.yaml
 .env.local
 .env.production
+.env
