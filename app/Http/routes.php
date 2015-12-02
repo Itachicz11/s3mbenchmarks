@@ -19,10 +19,8 @@
 // });
 
 
-Route::get('/home', 'CompanyController@index');
+Route::get('/', 'CompanyController@index');
 
-
-Route::get('/neco', ['as' => 'neco', 'uses' => 'CompanyController@get_something']);
 
 Route::resource('users','UserController');
 
@@ -37,7 +35,6 @@ Route::resource('benchmarks', 'BenchmarkController',
 Route::group(['prefix' => 'companies/{company}'], function() {
 
 	Route::get('keywordsplans/create', ['as' => 'keywordsplans.create', 'uses' => 'KeywordsPlanController@create' ]);
-
 
 	Route::get('keywordsplans/{keywordsplan}', ['as' => 'keywordsplans.show', 'uses' => 'KeywordsPlanController@show']);
 
