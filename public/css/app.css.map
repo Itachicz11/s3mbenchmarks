@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AAAQ,0BAAe;AAEvB,IAAK;EACH,WAAW,EAAE,IAAI;;AAGnB,gBAAiB;EAChB,aAAa,EAAE,IAAI",
-"sources": ["app.scss"],
-"names": [],
-"file": "app.css"
-}
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA,4BAAuB;AAEvB;EACE,mBAAkB,EADd;;AAIN;EACC,qBAAoB,EADH","file":"app.css","sourcesContent":["@import 'bootstrap.css';\n\nbody {\n  padding-top: 50px;\n}\n\n.company-heading {\n\tmargin-bottom: 30px;\n}"],"sourceRoot":"/source/"}

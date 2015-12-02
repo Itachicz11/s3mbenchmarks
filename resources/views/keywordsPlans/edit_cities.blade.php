@@ -28,17 +28,17 @@
 				<table class="table table-striped keywords-table">
 					<thead>
 						<tr>
-							<th>Keyword</th>
+							<th>City</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php $i = 0 ?>
-						@foreach ($keywordsPlan->keywords as $keyword)
-							{!! Form::model($keyword, ['route' => ['keywords.update', $keyword->id], 'method' => 'PUT']) !!}
+						@foreach ($kw_plan->cities as $city)
+							{!! Form::model($city, ['route' => ['keywordsplans.cities.update', $kw_plan, $city], 'method' => 'PUT']) !!}
 							<tr>
 								<td>
-									{!! Form::text('keyword[]', $keyword->text, ['class' => 'form-control ']) !!}
+									{!! Form::text('city', $city->name, ['class' => 'form-control ']) !!}
 								</td>
 								<td>
 									{!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
@@ -50,7 +50,7 @@
 					</tbody>
 				</table>
 
-				{!! link_to_route("keywordsplans.show", "Back", ['id' => $keywordsPlan], ['class' => 'btn btn-primary']) !!}
+				{!! link_to_route("keywordsplans.show", "Back", [$company, $kw_plan], ['class' => 'btn btn-primary']) !!}
 
 
 

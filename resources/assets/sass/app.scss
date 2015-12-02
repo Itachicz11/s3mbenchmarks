@@ -1,5 +1,9 @@
-.form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-	}
+@import 'bootstrap.css';
+
+body {
+  padding-top: 50px;
+}
+
+.company-heading {
+	margin-bottom: 30px;
+}

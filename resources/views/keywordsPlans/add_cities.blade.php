@@ -27,8 +27,8 @@
 
 
 
-				{!! Form::model($keyword, [
-					'route' => ['keywords.store','keywords_plan' => $keywords_plan, 'company' => $company],
+				{!! Form::model($city, [
+					'route' => ['keywordsplans.cities.store', $keywords_plan],
 					'method' => 'POST',
 					'class' => 'form-horizontal keywords-plan-form'
 					]) !!}
@@ -38,29 +38,29 @@
 						<table class="table table-stripped">
 							<thead>
 								<tr>
-									<th>Add Keyword</th>
+									<th>Add City</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td scope="row">{!! Form::text(null, null, ['class' => 'form-control keyword-input']) !!}</td>
-									<td scope="row"><a href="#" class="btn btn-primary add-keyword">Add keyword</a></td>
+									<td scope="row">{!! Form::text(null, null, ['class' => 'form-control city-input']) !!}</td>
+									<td scope="row"><a href="#" class="btn btn-primary add-city">Add city</a></td>
 								</tr>
 							</tbody>
 						</table>
 
-						<table class="table table-striped keyword-table">
+						<table class="table table-striped city-table">
 							<thead>
 								<tr>
-									<th>Keyword</th>
+									<th>City</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="keyword-copy-row hidden">
-									<td>{!! Form::text(null, null, ['class' => 'form-control keyword']) !!}</td>
-									<td class="action"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></td>
+								<tr class="city-copy-row hidden">
+									<td>{!! Form::text(null, null, ['class' => 'form-control city']) !!}</td>
+									<td class="action"><input type="button" class="btn btn-danger remove-city" value="Remove"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -68,7 +68,7 @@
 
 				<div class="col-md-12">
 					{!! link_to_route("keywordsplans.show", "Back", [$company, $keywords_plan], ['class' => 'btn btn-primary']) !!}
-					{!! Form::submit('Save Keywords', ['class' => 'btn btn-success save-plan']); !!}
+					{!! Form::submit('Save Cities', ['class' => 'btn btn-success save-plan']); !!}
 				</div>
 
 

@@ -25,31 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateKeywordsPlan.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateKeywordsPlan.php">
+      <file leaf-file-name="CompanyController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CompanyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80444443" vertical-offset="337" max-vertical-offset="1078">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Request.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/Request.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.076923" vertical-offset="0" max-vertical-offset="352">
-              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.153846" vertical-offset="1562" max-vertical-offset="4928">
-              <caret line="91" column="39" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.09777778" vertical-offset="132" max-vertical-offset="2662">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -72,13 +52,15 @@
         <option value="$PROJECT_DIR$/resources/views/users/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" />
         <option value="$PROJECT_DIR$/resources/views/companies/index.blade.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/CreateBenchmark.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BenchmarkController.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/CreateKeywordsPlan.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Route.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" />
       </list>
     </option>
   </component>
@@ -219,7 +201,7 @@
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="createkeywords&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Requests/CreateKeywordsPlan.php&#10;create&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/database/migrations/2015_08_17_195552_create_keywordsPlans_table.php&#10;bencon&#9;null&#9;null&#10;createke&#9;null&#9;null&#10;route&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/routes.php&#10;createben&#9;null&#9;null&#10;find&#9;ACTION&#9;FindMenuGroup&#10;createbe&#9;null&#9;null&#10;compa/ind&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/companies/index.blade.php&#10;companycon&#9;null&#9;null&#10;authcon&#9;null&#9;null&#10;userco&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;users/cre&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/users/create.blade.php&#10;createuser&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Requests/CreateUser.php&#10;usercon&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;welcome&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/welcome.blade.php&#10;routephp&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/routes.php&#10;userc&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;data&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/database.php&#10;database.php&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/database.php&#10;bootstrap&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/node_modules/laravel-elixir/node_modules/gulp-sass/node_modules/node-sass/src/libsass/script/bootstrap&#10;config/app&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/app.php&#10;indent&#9;ACTION&#9;AutoIndentLines&#10;plugins&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="companyco&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/CompanyController.php&#10;illuminate/route&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php&#10;routes&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/routes.php&#10;userphp&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/User.php&#10;createkeywords&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Requests/CreateKeywordsPlan.php&#10;create&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/database/migrations/2015_08_17_195552_create_keywordsPlans_table.php&#10;bencon&#9;null&#9;null&#10;createke&#9;null&#9;null&#10;route&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/routes.php&#10;createben&#9;null&#9;null&#10;find&#9;ACTION&#9;FindMenuGroup&#10;createbe&#9;null&#9;null&#10;compa/ind&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/companies/index.blade.php&#10;companycon&#9;null&#9;null&#10;authcon&#9;null&#9;null&#10;userco&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;users/cre&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/users/create.blade.php&#10;createuser&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Requests/CreateUser.php&#10;usercon&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;welcome&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/resources/views/welcome.blade.php&#10;routephp&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/routes.php&#10;userc&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/app/Http/Controllers/UserController.php&#10;data&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/database.php&#10;database.php&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/database.php&#10;bootstrap&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/node_modules/laravel-elixir/node_modules/gulp-sass/node_modules/node-sass/src/libsass/script/bootstrap&#10;config/app&#9;FILE&#9;file:///Applications/MAMP/htdocs/laravel/config/app.php&#10;indent&#9;ACTION&#9;AutoIndentLines&#10;plugins&#9;null&#9;null" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager">
@@ -307,11 +289,58 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1012" max-vertical-offset="1254">
+          <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2112">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="22220">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateKeywordsPlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1056">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="352">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1562" max-vertical-offset="4928">
+          <caret line="91" column="7" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="623" max-vertical-offset="1342">
@@ -324,7 +353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="924">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -332,7 +360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="22330">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -340,9 +367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3278">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -403,13 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CompanyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58666664" vertical-offset="220" max-vertical-offset="2266">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/companies/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65185183" vertical-offset="22" max-vertical-offset="704">
@@ -431,13 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67407405" vertical-offset="139" max-vertical-offset="814">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/users/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45185184" vertical-offset="223" max-vertical-offset="924">
@@ -449,9 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.3022223" vertical-offset="0" max-vertical-offset="3278">
           <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -459,15 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.88" vertical-offset="726" max-vertical-offset="22330">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51111114" vertical-offset="623" max-vertical-offset="1342">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -475,30 +473,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44148147" vertical-offset="54" max-vertical-offset="902">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateKeywordsPlan.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.153846" vertical-offset="1562" max-vertical-offset="4928">
-          <caret line="91" column="39" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.34814814" vertical-offset="381" max-vertical-offset="1056">
+          <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/Request.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.076923" vertical-offset="0" max-vertical-offset="352">
+        <state vertical-scroll-proportion="0.19555555" vertical-offset="0" max-vertical-offset="675">
           <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateKeywordsPlan.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80444443" vertical-offset="337" max-vertical-offset="1078">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3585185" vertical-offset="1562" max-vertical-offset="4928">
+          <caret line="91" column="7" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70074075" vertical-offset="121" max-vertical-offset="836">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60888886" vertical-offset="1437" max-vertical-offset="2112">
+          <caret line="93" column="32" selection-start-line="93" selection-start-column="32" selection-end-line="93" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64148146" vertical-offset="579" max-vertical-offset="1254">
+          <caret line="51" column="78" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32592592" vertical-offset="836" max-vertical-offset="22308">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09777778" vertical-offset="132" max-vertical-offset="2662">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
         </state>
       </provider>

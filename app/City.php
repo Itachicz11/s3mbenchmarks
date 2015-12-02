@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keyword extends Model
+class City extends Model
 {
 
 	/**
@@ -12,7 +12,7 @@ class Keyword extends Model
 	 *
 	 * @var string
 	 */
-	protected $table = 'keywords';
+	protected $table = 'cities';
 
 
 	/**
@@ -20,7 +20,7 @@ class Keyword extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['text'];
+	protected $fillable = ['name'];
 
 
 	public function keywords_plan()
@@ -28,18 +28,8 @@ class Keyword extends Model
 		return $this->belongsToMany('App\KeywordsPlan');
 	}
 
-	public function company()
-	{
-		return $this->belongsTo('App\Company');
-	}
-
-	public function page_ranks()
-	{
-		return $this->hasMany('App\PageRank');
-	}
-
 	/**
-	 * If this was the last relation with this keyword (no other keywords plan is using this keyword),
+	 * If this was the last relation with this keyword (no other keywords plan is using this keyword.
 	 * delete this keyword from keywrods table
 	 *
 	 */

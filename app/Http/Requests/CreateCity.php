@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\Http\Requests\Input;
 
-class CreateKeywordsPlan extends Request
+class CreateCity extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,22 +23,8 @@ class CreateKeywordsPlan extends Request
      */
     public function rules()
     {
-
-
-        $rules = [
-            'date' => 'required|date|unique:keywords_plans,date',
-            'approved' => 'boolean',
-            'keyword' => 'required'
+        return [
+            'city' => 'required'
         ];
-
-
-        for ($i = 0; $i < count($this->keyword); $i++) {
-
-            $rules['keyword'.$i] = 'date';
-
-        }
-
-        return $rules;
-
     }
 }

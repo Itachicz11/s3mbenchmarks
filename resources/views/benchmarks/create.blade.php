@@ -27,11 +27,11 @@
 
 				{!! Form::model($benchmark, ['route' => ['benchmarks.store', 'company' => $company], 'method' => 'POST', 'class' => 'form-horizontal benchmark-form']) !!}
 
-					<div class="row">						
+					<div class="row">
 						<div class="col-md-4">
 							{!! Form::date('date', null, ['class' => 'form-control']) !!}
 						</div>
-		
+
 						<div class="col-md-4">
 							{!! Form::submit('Save Benchmark', ['class' => 'btn btn-success save-benchmark']); !!}
 						</div>

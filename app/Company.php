@@ -39,10 +39,15 @@ class Company extends Model
 	    return $this->hasMany('App\KeywordsPlan');
 	}
 
-
 	public function keywords()
 	{
-	    return $this->hasMany('App\Keyword');
+		$keywords = Keyword::whereHas('keywords_plan', function($q)
+		{
+			$q->where('company_id', '=', $this->id);
+
+		})->get();
+
+		return $keywords;
 	}
 
 	/**

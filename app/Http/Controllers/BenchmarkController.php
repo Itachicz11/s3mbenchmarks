@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 use App\Company;
 use App\PageRank;
+use App\Keyword;
 use App\Benchmark;
 use App\Http\Requests\CreateBenchmark;
 use App\Http\Requests\CompareBenchmarks;
@@ -43,10 +44,10 @@ class BenchmarkController extends Controller
      */
     public function create($company)
     {
+
         $data['benchmark'] = new Benchmark;
         $data['company'] = Company::find($company);
-        $data['keywords'] = $data['company']->keywords->pluck('text');
-        dd($data['keywords']);
+        $data['keywords'] = $data['company']->keywords();
 
 
         return view("benchmarks/create", $data);
@@ -76,6 +77,7 @@ class BenchmarkController extends Controller
             array_push($page_ranks, $page_rank);
         }
 
+
         $benchmark->page_ranks()->saveMany($page_ranks);
 
         return redirect("companies/$company_id");
@@ -90,7 +92,8 @@ class BenchmarkController extends Controller
     public function show($id)
     {
         $data['benchmark'] = Benchmark::find($id);
-        $data['page_ranks'] = $data['benchmark']->page_ranks()->get();
+        $data['page_ranks'] = PageRank::with('keyword')->where('benchmark_id', $id)->get();
+
 
         return view('benchmarks/show', $data);
     }
@@ -151,10 +154,12 @@ class BenchmarkController extends Controller
         $benchmark_ids = $request->input('compare');
         $benchmarks = Benchmark::whereIn('id', $benchmark_ids)->orderBy('date', 'ASC')->get();
         $company = Company::find($request->input('company'));
-        $keywords = $company->keywords->pluck('text');
+        $keywords = $company->keywords();
 
 
         $results = [];
+
+
         foreach ($benchmarks[0]->page_ranks as $key => $page_rank) {
             $keyword = $page_rank->keyword->text;
 

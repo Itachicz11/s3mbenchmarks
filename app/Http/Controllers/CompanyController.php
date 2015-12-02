@@ -57,7 +57,7 @@ class CompanyController extends Controller
     public function show($id)
     {
         $data['company'] = Company::find($id);
-        $data['keywordsPlans'] = $data['company']->keywordsPlans;
+        $data['keywordsPlans'] = $data['company']->keywordsPlans->sortByDesc('date');
         $data['benchmarks'] = $data['company']->benchmarks;
 
         return view('companies/show', $data);
@@ -96,4 +96,5 @@ class CompanyController extends Controller
     {
         //
     }
+
 }

@@ -24,9 +24,8 @@ class UpdateKeywordsPlan extends Request
     public function rules()
     {
         return [
-        'date' => 'required|date|unique:keywords_plans,date',
-        'cities' => 'required',
-        'keywords' => 'required',
+        'date' => 'required|date',
+        'keyword' => 'required',
         'approved' => 'boolean'
         ];
     }

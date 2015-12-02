@@ -6,20 +6,28 @@
 		<thead>
 			<tr>
 				<th>Date</th>
-				<th>Approved</th>
+
+				@if (Auth::user()->can_use(1))
+					<th>Approved</th>
+				@endif
+
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($keywordsPlans as $keywordsPlan)
 			<tr>
-				<td scope="row">{!! link_to_route('keywordsplans.show', $keywordsPlan->date, array($keywordsPlan->id)) !!}</td>
+				<td scope="row">{!! link_to_route('keywordsplans.show', $keywordsPlan->date, [$company, $keywordsPlan->id]) !!}</td>
 
-				@if ($keywordsPlan->approved)
-					<td scope="row">{!! link_to_route('keywordsplans.approved', 'Yes', ['id' => $keywordsPlan->id], ['class' => 'btn btn-success']) !!}</td>
-				@else
-					<td scope="row">{!! link_to_route('keywordsplans.approved', 'No', ['id' => $keywordsPlan->id], ['class' => 'btn btn-danger']) !!}</td>
+
+				@if (Auth::user()->can_use(1))
+					@if ($keywordsPlan->approved)
+						<td scope="row">{!! link_to_route('keywordsplans.approved', 'Yes', [$keywordsPlan->id], ['class' => 'btn btn-success']) !!}</td>
+					@else
+						<td scope="row">{!! link_to_route('keywordsplans.approved', 'No', [$keywordsPlan->id], ['class' => 'btn btn-danger']) !!}</td>
+					@endif
 				@endif
+
 				<td scope="row">
 
 				{!! Form::open(array('route' => array('keywordsplans.destroy', $keywordsPlan->id), 'method' => 'DELETE')) !!}

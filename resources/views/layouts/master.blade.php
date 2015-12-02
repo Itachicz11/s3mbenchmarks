@@ -13,13 +13,6 @@
 </head>
 <body>
 
-	<div class="main-menu">
-		<div class="container">
-			<ul>
-			</ul>
-		</div>
-	</div>
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	      <div class="container">
 	        <div class="navbar-header">
@@ -34,6 +27,7 @@
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
 	          	<li>{!! link_to_route('companies.index', 'Companies', '') !!}</li>
+	          	<li>{!! link_to('/auth//logout', 'Logout') !!}</li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -43,8 +37,8 @@
 		@yield('content')
 	</div>
 
-
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 	@yield('scripts')
+	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
