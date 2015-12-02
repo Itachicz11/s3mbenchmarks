@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('scripts')
-	 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-@stop
-
 @section('content')
 
 <h2>{!! $company->name !!}</h2>

@@ -39,6 +39,7 @@
 
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 	@yield('scripts')
+	<script type="text/javascript" src="{{ asset('js/jsapi.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
