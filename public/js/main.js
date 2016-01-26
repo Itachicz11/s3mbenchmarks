@@ -8,6 +8,7 @@ jQuery(document).ready(function($) {
 	        'X-XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
 	});
+	
 
 	var navListItems = $('ul.setup-panel li a'),
 	    allWells = $('.setup-content');
@@ -44,15 +45,15 @@ jQuery(document).ready(function($) {
 
 
 	$('.remove-plan').click(function(event) {
-		alert('Are you sure?');
 		event.preventDefault();
+		alert('Are you sure?');
 
 		var btn = $(this),
 		planId = $(btn).data('plan'),
 		token = $(btn).siblings('input[name="_token"]').val();
 
 		$.ajax({
-			url: '/laravel/public/keywordsplans/'+planId,
+			url: '/keywordsplans/'+planId,
 			type: 'DELETE',
 			data: { _token: token }
 

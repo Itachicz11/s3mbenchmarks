@@ -14,8 +14,6 @@ class Benchmark extends Model
 	 */
 	protected $table = 'benchmarks';
 
-
-
 	/**
 	 * The attributes that are mass assignable.
 	 *
@@ -46,4 +44,23 @@ class Benchmark extends Model
 	{
 		return $this->hasMany('App\PageRank');
 	}
+
+	/**
+	 * @param  array | $id | ids of the benchmarks to compare
+	 * @return array | $results | copmare page ranks in provided benchmarks
+	 */
+	public function compare( $second ) {
+		$results = [];
+
+		foreach ($this->page_ranks as $key => $page_rank) {
+			$keyword = $page_rank->keyword->text;
+
+			$value = $this->page_ranks[$key]->value - $second->page_ranks[$key]->value;
+
+			array_push($results, $value);
+		}
+
+		return $results;
+	}
+
 }

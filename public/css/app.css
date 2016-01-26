@@ -1,8 +1,48 @@
-@import url(bootstrap.css);
-body {
-  padding-top: 50px; }
+.table .btn {
+  display: inline; }
 
-.company-heading {
-  margin-bottom: 30px; }
+.logo-text {
+  display: inline-block;
+  line-height: 57px;
+  font-size: 20px;
+  margin-left: 10px;
+  color: white;
+  font-family: "Open Sans"; }
 
-/*# sourceMappingURL=app.css.map */
+.profile-wrapper img, .profile-pic img {
+  width: 100%; }
+
+a {
+  color: #0AA699; }
+
+.steps-form .wizard-steps li {
+  max-width: 33.3333%;
+  min-width: 33.3333%; }
+
+.steps-form .tab-pane.active {
+  padding: 60px 20px 20px 20px; }
+
+.steps-form .wizard-actions {
+  margin-top: 30px; }
+
+.keyword-list .part, .city-list .part {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 10px; }
+
+.btn-fa.no-text:before {
+  margin-right: 0; }
+
+.btn-fa:before {
+  font-family: 'FontAwesome';
+  margin-right: 10px; }
+
+.page-content .breadcrumb {
+  margin-bottom: 15px; }
+  .page-content .breadcrumb .active {
+    font-weight: 600; }
+
+#keyword-update-bar {
+  margin-left: -26px; }
+  #keyword-update-bar.active {
+    bottom: 0; }

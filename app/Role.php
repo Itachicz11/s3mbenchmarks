@@ -15,12 +15,12 @@ class Role extends Model
 
 	public function permissions()
 	{
-		return $this->hasMany('App\Permission');
+		return $this->belongsToMany('App\Permission');
 	}
 
-	public function user()
+	public function users()
 	{
-		return $this->belongsToMany('App\User');
+		return $this->hasMany('App\User');
 	}
 
 }

@@ -17,7 +17,7 @@
 // });
 
 
-Route::get('/', 'CompanyController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'CompanyController@index']);
 
 
 Route::resource('users','UserController');
@@ -67,7 +67,7 @@ Route::resource('keywords', 'KeywordController',
 
 Route::get('companies/{company}/keywordsplans/{keywordsplan}/keywords/create', [ 'as' => 'keywords.create', 'uses' => 'KeywordController@create' ]);
 
-Route::get('companies/{company}/keywordsplans/{keywordsplan}/keywords/edit', [ 'as' => 'keywords.edit', 'uses' => 'KeywordController@edit' ]);
+Route::get('keywords/{keyword}/edit', [ 'as' => 'keywords.edit', 'uses' => 'KeywordController@edit' ]);
 
 
 Route::get('companies/{company}/keywordsplans/{keywordsplan}/keywords/edit', ['as' => 'keywordsplans.keywords.edit', 'uses' => 'KeywordsPlanController@edit_keywords' ]);
@@ -92,6 +92,11 @@ Route::get('benchmarks/{company}/create', [
 Route::get('benchmarks/{id}/{company}/edit', [
 	'as' => 'benchmarks.edit',
 	'uses' => 'BenchmarkController@edit'
+]);
+
+Route::post('benchmarks/pdf/{first_bench}/{second_bench}', [
+	'as' => 'benchmarks.pdf',
+	'uses' => 'BenchmarkController@print_pdf'
 ]);
 
 Route::post('benchmarks/compare', [

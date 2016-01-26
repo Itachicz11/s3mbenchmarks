@@ -7,69 +7,61 @@
 
 @section('content')
 
-@include('partials.company_heading')
+{{-- @include('partials.company_heading') --}}
+
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+	<strong>Whoops!</strong> There were some problems with your input.<br><br>
+	<ul>
+		@foreach ($errors->all() as $error)
+		<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+</div>
+@endif
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-			<h4 class="panel-heading text-center">Add Keywords</h4>
-			<div class="panel-body">
-				@if (count($errors) > 0)
-				<div class="alert alert-danger">
-					<strong>Whoops!</strong> There were some problems with your input.<br><br>
-					<ul>
-						@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-				@endif
-
-
+		<div class="grid simple">
+			<div class="grid-title no-border">
+				<h3>Add <span class="semi-bold">Keywords</span></h3>
+				<p>Add another keywords to your keywords plan.</p>
+			</div>
+			<div class="grid-body no-border">
 
 				{!! Form::model($keyword, [
 					'route' => ['keywords.store','keywords_plan' => $keywords_plan, 'company' => $company],
 					'method' => 'POST',
-					'class' => 'form-horizontal keywords-plan-form'
+					'class' => 'keywords-plan-form'
 					]) !!}
 
-					<div class="col-md-12">
+					<div class="row column-seperation form-group">
+						<div class="col-md-12">
 
-						<table class="table table-stripped">
-							<thead>
-								<tr>
-									<th>Add Keyword</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td scope="row">{!! Form::text(null, null, ['class' => 'form-control keyword-input']) !!}</td>
-									<td scope="row"><a href="#" class="btn btn-primary add-keyword">Add keyword</a></td>
-								</tr>
-							</tbody>
-						</table>
+							<div class="row form-row">
+								<div class="col-md-8">
+									{!! Form::text(null, null, ['class' => 'form-control keyword-input', 'placeholder' => 'keyword']) !!}
+								</div>
+								<div class="col-md-4">
+									<a href="javascript:;" class="btn btn-primary btn-cons add-keyword">Add keyword</a>
+								</div>
+							</div>
 
-						<table class="table table-striped keyword-table">
-							<thead>
-								<tr>
-									<th>Keyword</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="keyword-copy-row hidden">
-									<td>{!! Form::text(null, null, ['class' => 'form-control keyword']) !!}</td>
-									<td class="action"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></td>
-								</tr>
-							</tbody>
-						</table>
+							<div class="keyword-list">							
+								<div class="keyword-copy-row clearfix hidden">
+									<div class="part">{!! Form::text(null, null, ['class' => 'form-control keyword']) !!}</div>
+									<div class="part"><input type="button" class="btn btn-danger remove-keyword" value="Remove"></div>
+								</div>
+							</div>
+
+						</div>
 					</div>
 
-				<div class="col-md-12">
-					{!! link_to_route("keywordsplans.show", "Back", [$company, $keywords_plan], ['class' => 'btn btn-primary']) !!}
-					{!! Form::submit('Save Keywords', ['class' => 'btn btn-success save-plan']); !!}
-				</div>
+
+
+					<div class="form-group">
+						{!! Form::submit('Save Keywords', ['class' => 'btn btn-success save-plan']); !!}
+					</div>
 
 
 

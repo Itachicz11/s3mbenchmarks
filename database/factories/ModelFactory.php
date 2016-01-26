@@ -1,21 +1,46 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
-
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
+        'full_name' => 'Jakub Kohout',
+        'username' => 'Admin',
+        'email' => 'test@gmail.com',
+        'password' => bcrypt('Uchiha'),
+        'role_id' => 1
+    ];
+});
+
+$factory->define(App\Company::class, function (Faker\Generator $faker) {
+    return [
+        'id' => 1,
+        'name' => 'google',
+        'url' => 'http://www.google.com',
+        'email' => 'google@gmail.com',
+    ];
+});
+
+$factory->define(App\Role::class, function (Faker\Generator $faker, $values) {
+    return [
+        'role_name' => $values['role_name'],
+    ];
+});
+
+$factory->define(App\Permission::class, function (Faker\Generator $faker) {
+    return [
+        'permission_name' => 'approve benchmarks',
+    ];
+});
+
+$factory->define(App\KeywordsPlan::class, function (Faker\Generator $faker) {
+    return [
+        'date' => $faker->date,
+        'approved' => true,
+        'company_id' => 1
+    ];
+});
+
+$factory->define(App\Keyword::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->word
     ];
 });

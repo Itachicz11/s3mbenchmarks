@@ -13,5 +13,4 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
-    mix.coffee(['create_keywordsplan.coffee', 'users_companies_chart.coffee']);
 });

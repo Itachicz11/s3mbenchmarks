@@ -1,61 +1,68 @@
-@extends('layouts.master')
+@extends('layouts.login')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+<div class="col-md-5 col-md-offset-1">
+	<h2>Sign in to <span class="semi-bold">S3M</span></h2>
+	<p class="joke-wrapp"></p>
+</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+<div class="col-md-5 ">
+	@if (count($errors) > 0)
+	<div class="alert alert-danger">
+		<strong>You entered invalid information</strong> </br></br>
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+	{!! Form::open([ 'url' => '/auth/login', 'method' => 'POST', 'novalidate' => 'novalidate', 'class' => 'login-form', 'id' => 'login-form' ]) !!}
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
+		<div class="row">
+			<div class="form-group col-md-10">
+				{!! Form::label('email', 'Email', ['class' => 'form-label']) !!}
+				<div class="controls">
+					<div class="input-with-icon  right">                                       
+						<i class=""></i>
+						{!! Form::text('email', '', ['class' => 'form-control']) !!}
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+
+		<div class="row">
+			<div class="form-group col-md-10">
+				{!! Form::label('password', 'Password', ['class' => 'form-label']) !!}
+				<div class="controls">
+					<div class="input-with-icon right">                                       
+						<i class=""></i>
+						{!! Form::password('password', ['class' => 'form-control']) !!}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="control-group  col-md-10">
+				<div class="checkbox checkbox check-success">
+					{!! Form::checkbox('remember') !!}
+					<label for="remember">Keep me reminded </label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10">
+				{!! Form::submit('Login', ['class' => 'btn btn-primary btn-cons pull-right']) !!}
+			</div>
+		</div>
+
+	{!! Form::close() !!}
+
+
+
+
 @endsection

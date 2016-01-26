@@ -1,10 +1,23 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
+    protected $to_truncate = [
+    'users',
+    'benchmarks',
+    'companies',
+    'keywords_plans',
+    'keywords',
+    'keyword_keywords_plan',
+    'roles',
+    'permissions',
+    'permission_role',
+    'cities',
+    'city_keywords_plan',
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -12,18 +25,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        Model::reguard();
-    	$this->call('BenchmarksTableSeeder');
-		$this->call('CompaniesTableSeeder');
-		$this->call('KeywordsTableSeeder');
-		$this->call('KeywordsPlansTableSeeder');
-		$this->call('MigrationsTableSeeder');
-		$this->call('PageRanksTableSeeder');
-		$this->call('PasswordResetsTableSeeder');
-		$this->call('UsersTableSeeder');
-	}
+        foreach ($this->to_truncate as $table) {
+            DB::table($table)->truncate();
+        }
+
+        $this->call('UsersTableSeeder');
+
+        $this->call('RolesTableSeeder');
+
+        $this->call('PermissionsTableSeeder');
+
+        $this->call('CompaniesTableSeeder');
+
+        // $this->call('KeywordsPlansTableSeeder');
+
+        // $this->call('KeywordsTableSeeder');
+
+    }
 }

@@ -14,6 +14,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 {
     use Authenticatable, CanResetPassword;
 
+
     /**
      * The database table used by the model.
      *
@@ -26,7 +27,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['email', 'password'];
+    protected $fillable = ['email', 'password', 'username', 'full_name'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -42,6 +43,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsTo('App\Role');
     }
 
+
+    public function permissions()
+    {
+        return $this->role->belongsToMany('App\Permission');
+    }
+
+
     /**
      * retrieves if user has right givven permission
      * @param integer $permission_id the ID of a permission, you can find it in the permissions table.
@@ -49,7 +57,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function can_use($permission_id)
     {
-        return DB::table('permission_role')->where(['role_id' => $this->role_id, 'permission_id' => $permission_id])->exists();
+        return $this->permissions->contains($permission_id);
     }
 
 

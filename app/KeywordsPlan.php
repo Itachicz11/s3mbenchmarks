@@ -15,7 +15,6 @@ class KeywordsPlan extends Model
 	protected $table = 'keywords_plans';
 
 
-
 	/**
 	 * The attributes that are mass assignable.
 	 *

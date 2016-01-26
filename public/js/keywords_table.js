@@ -17,9 +17,9 @@ function addResource(resourceName) {
 		var rowCopy = $('.'+resourceName+'-copy-row').clone();
 		var resource = $('.'+resourceName+'-input').val();
 
-		$(rowCopy).attr('class', resourceName+'-row');
-		$(rowCopy).appendTo('.'+resourceName+'-table tbody');
-		$(rowCopy).find('input[type="text"]').attr('name', resourceName+'['+i+']').val(resource);
+		$(rowCopy).attr('class', resourceName+'-row clearfix');
+		$(rowCopy).appendTo('.'+resourceName+'-list');
+		$(rowCopy).find('input[type="text"]').attr('name', resourceName+'[]').val(resource);
 
 		$('.'+resourceName+'-input').focus().val("");
 		i++;
@@ -28,9 +28,9 @@ function addResource(resourceName) {
 
 function removeRow(resourceName) {
 	// Removing keyword
-	$('.'+resourceName+'-table').on('click', '.remove-'+resourceName, function(event) {
+	$('.'+resourceName+'-list').on('click', '.remove-'+resourceName, function(event) {
 		event.preventDefault();
-		$(this).parents("tr").remove();
+		$(this).parents(".keyword-row").remove();
 	});
 }
 

@@ -47,6 +47,7 @@ class Company extends Model
 
 		})->get();
 
+
 		return $keywords;
 	}
 
@@ -55,7 +56,14 @@ class Company extends Model
 	 */
 	public function getApproved()
 	{
-		return $this->keywordsPlans()->where('approved', 1)->get();
+		$collection  = $this->keywordsPlans;
+
+		$filtered = $collection->filter(function ($item) {
+
+			return $item->approved == 1;
+		});
+
+		return $filtered;
 	}
 
 }

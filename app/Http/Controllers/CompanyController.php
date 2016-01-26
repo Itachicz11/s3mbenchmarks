@@ -6,6 +6,7 @@ use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CreateCompany;
+use Auth;
 
 class CompanyController extends Controller
 {
@@ -23,6 +24,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::all();
+        
         return view('companies/index', ['companies' => $companies]);
     }
 
@@ -31,8 +33,9 @@ class CompanyController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
         return view('companies/create');
     }
 
@@ -58,6 +61,7 @@ class CompanyController extends Controller
     {
         $data['company'] = Company::find($id);
         $data['keywordsPlans'] = $data['company']->keywordsPlans->sortByDesc('date');
+        $data9['approved'] = $data['company']->getApproved();
         $data['benchmarks'] = $data['company']->benchmarks;
 
         return view('companies/show', $data);

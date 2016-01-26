@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-
+use App;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF;
 use App\Company;
 use App\PageRank;
 use App\Keyword;
@@ -15,10 +15,13 @@ use App\Benchmark;
 use App\Http\Requests\CreateBenchmark;
 use App\Http\Requests\CompareBenchmarks;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\PrintBenchmarkRequest;
 
 class BenchmarkController extends Controller
 {
 
+    public $pdf_view;
+    public $neco = 2;
 
     public function __construct()
     {
@@ -151,30 +154,81 @@ class BenchmarkController extends Controller
 
     public function compare(CompareBenchmarks $request)
     {
-        $benchmark_ids = $request->input('compare');
-        $benchmarks = Benchmark::whereIn('id', $benchmark_ids)->orderBy('date', 'ASC')->get();
-        $company = Company::find($request->input('company'));
-        $keywords = $company->keywords();
+        // ids of benchmarks to compare
+        $benchmark_id_a = $request->input('first_compare');;
+        $benchmark_id_b = $request->input('second_compare');;
 
+        // ids of benchmarks to compare
+        $benchmark_ids = [$benchmark_id_a, $benchmark_id_b];
+        // Get the pageranks which are associated with selected benchmarks
+        $page_ranks = PageRank::whereHas('benchmark', function( $query ) use ($benchmark_ids) {
+            $query->whereIn('id', $benchmark_ids);
+        })->with('keyword')->with('benchmark')->get();
+
+        // get the benchmarks which we grabbed with previous request
+        $benchmarks = Benchmark::whereIn('id', [$benchmark_id_a, $benchmark_id_b])->with('page_ranks')->get(); 
+        $keywords = $page_ranks->unique('keyword')->pluck('keyword');
+
+        $page_ranks_a = $page_ranks->filter(function ($item) use ($benchmark_id_a) {
+            return $item->benchmark->id == $benchmark_id_a;
+        });
+        $page_ranks_b = $page_ranks->filter(function ($item) use ($benchmark_id_b) {
+            return $item->benchmark->id == $benchmark_id_b;
+        })->flatten();
 
         $results = [];
-
-
-        foreach ($benchmarks[0]->page_ranks as $key => $page_rank) {
-            $keyword = $page_rank->keyword->text;
-
-            $value = $benchmarks[0]->page_ranks[$key]->value - $benchmarks[1]->page_ranks[$key]->value;
-
-            array_push($results, $value);
+        foreach($page_ranks_a as $index => $page_rank){
+            $val_a = $page_rank->value;
+            $val_b = $page_ranks_b[$index]->value;
+            
+            $results[$index] = $val_a - $val_b;
         }
 
-        $data['benchmarks'] = $benchmarks;
-        $data['results'] = $results;
-        $data['keywords'] = $keywords;
-        $data['company'] = $company;
+        $data = [
+            'page_ranks' => $page_ranks,
+            'benchmarks' => $benchmarks,
+            'results' => $results,
+            'keywords' => $keywords
+        ];
 
         return view('benchmarks.compare', $data);
 
+    }
+
+
+
+    public function print_pdf($bench_id_a, $bench_id_b, PrintBenchmarkRequest $request)
+    {
+
+        $benchmarks = Benchmark::whereIn('id', [$bench_id_a, $bench_id_b])->with('page_ranks')->get();
+        $page_ranks = PageRank::whereIn('benchmark_id', [$bench_id_a, $bench_id_b])->with('keyword')->get();
+        $keywords = $page_ranks->pluck('keyword')->unique();
+
+        // page ranks of first benchmark
+        $page_ranks_a = $benchmarks->pluck('page_ranks')[0];
+        // page ranks of second benchmark
+        $page_ranks_b = $benchmarks->pluck('page_ranks')[1];
+
+        $results = [];
+        foreach ($page_ranks_a as $key => $page_rank) {
+            $results[] = $page_rank->value - $page_ranks_b[$key]->value;
+        }
+
+        $data = [
+            'benchmarks' => $benchmarks,
+            'page_ranks' => $page_ranks,
+            'keywords' => $keywords,
+            'results' => $results,
+        ];
+
+        // return view('pdf.benchmarks_compare', $data);
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.benchmarks_compare', $data);
+        return $pdf->stream();
+
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadView('pdf.benchmarks_compare', $data);
+        // return $pdf->stream();       
     }
 
 }

@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the user.
      *
      * @return Response
      */
@@ -24,18 +23,18 @@ class UserController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @return Response
      */
     public function create()
     {
-        
+
         return view('users/create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in storage.
      *
      * @param CreateUser|Request $request
      * @return Response
@@ -45,14 +44,17 @@ class UserController extends Controller
 
         $user = new User;
         $user->email = $request->input('email');
+        dd( $request->input('username') );
+        $user->username = $request->input('username');
         $user->password = bcrypt($request->input('password'));
+        $user->role_id = 2;
         $user->save();
 
         return redirect('/');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @param  int  $id
      * @return Response
@@ -62,7 +64,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified user.
      *
      * @param  int  $id
      * @return Response
@@ -73,7 +75,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user in storage.
      *
      * @param  Request  $request
      * @param  int  $id
@@ -85,7 +87,7 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user from storage.
      *
      * @param  int  $id
      * @return Response

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use App\Http\Requests\Input;
+use \Carbon\Carbon;
 
 class CreateKeywordsPlan extends Request
 {
@@ -17,6 +18,15 @@ class CreateKeywordsPlan extends Request
         return true;
     }
 
+    public function sanitize()
+    {
+       $input = $this->all();
+
+       $input['date'] = Carbon::parse( $this->date )->format('Y/m/d');
+
+       $this->replace($input); 
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,6 +35,7 @@ class CreateKeywordsPlan extends Request
     public function rules()
     {
 
+        $this->sanitize();
 
         $rules = [
             'date' => 'required|date|unique:keywords_plans,date',

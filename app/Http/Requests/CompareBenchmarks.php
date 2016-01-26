@@ -24,7 +24,8 @@ class CompareBenchmarks extends Request
     public function rules()
     {
         return [
-            'compare' => 'required|array|min:2'
+            'first_compare' => 'required|integer',
+            'second_compare' => 'required|integer',
         ];
     }
 

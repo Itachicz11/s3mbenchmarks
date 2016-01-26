@@ -25,6 +25,8 @@ class CreateUser extends Request
     {
         return [
             'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users,username',
+            'full_name' => 'required',
             'password' => 'required|confirmed'
         ];
     }

@@ -1,19 +1,15 @@
 @extends('layouts.master')
 
-
-
 @section('content')
 
-
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-			<div class="panel-heading">Benchmark Preview</div>
-			<div class="panel-body">
+	<div class="col-md-9 col-md-offset-1">
 
+		<div class="grid simple">
+			<div class="grid-title"><h4>Benchmark Preview</h4></div>
+			<div class="grid-body">
 
-
-				<table class="table table-striped benchmark-table">
+				<table class="table benchmark-table">
 					<thead>
 						<tr>
 							<th>Keyword</th>
@@ -32,6 +28,7 @@
 								<td>{!! $benchmarks[0]->page_ranks[$key]->value !!}</td>
 								<td>{!! $benchmarks[1]->page_ranks[$key]->value !!}</td>
 
+
 								@if ( $results[$key] >= 1 )
 									<td><span class="label label-success">+{!! $results[$key] !!}</span></td>
 								@elseif ( $results[$key] < 0 )
@@ -39,8 +36,8 @@
 								@else
 									<td>{!! $results[$key] !!}</td>
 								@endif
-
 							</tr>
+
 							<?php $i++; ?>
 						@endforeach
 						<tr class="copy-row hidden">
@@ -51,13 +48,15 @@
 					</tbody>
 				</table>
 
+				{!! Form::open(['route' => ['benchmarks.pdf', $benchmarks[0], $benchmarks[1]], 'method' => 'POST', 'id' => 'pdf-form']) !!}
+					{!! link_to_route('companies.show', 'Back', ['company' => $benchmarks[0]->company], ['class' => 'btn btn-primary']) !!}
+					{!! Form::submit('Get PDF', ['class' => 'btn btn-success']) !!}
+				{!! Form::close() !!}
 
-				{!! link_to_route('companies.show', 'Back', ['company' => $benchmarks[0]->company], ['class' => 'btn btn-primary']) !!}
 
 			</div>
 		</div>
 	</div>
 </div>
-
 @endsection
 

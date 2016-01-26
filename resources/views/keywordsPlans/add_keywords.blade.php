@@ -11,9 +11,9 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-			<h4 class="panel-heading text-center">Add Keywords</h4>
-			<div class="panel-body">
+		<div class="grid simple">
+			<h4 class="grid-heading">Add Keywords</h4>
+			<div class="grid-body">
 				@if (count($errors) > 0)
 				<div class="alert alert-danger">
 					<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -32,6 +32,8 @@
 					'method' => 'POST',
 					'class' => 'form-horizontal keywords-plan-form'
 					]) !!}
+
+					
 
 					<div class="col-md-12">
 
